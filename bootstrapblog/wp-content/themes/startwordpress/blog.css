@@ -36,41 +36,76 @@ h6, .h6 {
  */
 
 .blog-masthead {
-  background-color: #428bca;
+  background-color: #333;
   -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
           box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
 
 /* Nav links */
-.blog-nav-item {
-  position: relative;
-  display: inline-block;
-  padding: 10px;
-  font-weight: 500;
-  color: #cdddeb;
+.blog-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
-.blog-nav-item:hover,
-.blog-nav-item:focus {
-  color: #fff;
+
+.blog-nav li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+.blog-nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
 
-/* Active state gets a caret at the bottom */
-.blog-nav .active {
-  color: #fff;
+.blog-nav .current_page_item {
+    background-color: #FFF;
 }
-.blog-nav .active:after {
+
+.blog-nav .current_page_item a {
+    background-color: #FFF;
+    color: #000;
+}
+
+.blog-nav .page_item,
+.blog-nav .page_item :after,
+.blog-nav .page_item :before {
+  transition: all .5s;
+}
+
+.blog-nav .page_item  {
+  position:relative;
+  z-index: 1;
+}
+.blog-nav .page_item :hover {
+  color: #000;
+}
+.blog-nav .page_item :after {
+  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  margin-left: -5px;
-  vertical-align: middle;
-  content: " ";
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid;
-  border-left: 5px solid transparent;
+  right: 0;
+  margin: auto;
+  width: 1px;
+  height: 100px;
+  content: '.';
+  color: red;
+  background: #FFF;
+  visibility: none;
+  opacity: 0;
+  z-index: -1;
+}
+
+.blog-nav .page_item :hover:after {
+  opacity: 1;
+  visibility: visible;
+  width: 100%;
 }
 
 
@@ -87,6 +122,11 @@ h6, .h6 {
   margin-bottom: 0;
   font-size: 60px;
   font-weight: normal;
+  text-decoration: none;
+}
+
+.blog-title :hover {
+  text-decoration: none;
 }
 .blog-description {
   font-size: 20px;
